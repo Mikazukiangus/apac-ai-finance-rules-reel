@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asia-Pacific AI Finance Rules</title>
+<meta name="description" content="An 83-second animated explainer on how financial regulators across Asia-Pacific are writing rules for AI.">
+<style>
+  :root { --bg: #ECEAE4; --ink: #1D221F; --btn: #1D221F; --btnText: #FFFFFF; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #141614; --ink: #E8E6E0; --btn: #E8E6E0; --btnText: #141614; } }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  main { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 16px; }
+  .frame { position: relative; height: min(84vh, calc((100vw - 32px) * 16 / 9)); aspect-ratio: 9 / 16; max-width: calc(100vw - 32px); border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 10px 40px rgba(0,0,0,.18); }
+  video { width: 100%; height: 100%; display: block; object-fit: contain; background: #000; cursor: pointer; }
+  button { appearance: none; border: 0; border-radius: 999px; padding: 12px 28px; font-size: 16px; font-weight: 600; background: var(--btn); color: var(--btnText); cursor: pointer; min-width: 120px; }
+  button:focus-visible { outline: 3px solid #45BC86; outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="frame">
+    <video id="reel" src="./reel.mp4" playsinline preload="auto" poster=""></video>
+  </div>
+  <button id="toggle" type="button" aria-controls="reel">Play</button>
+</main>
+<script>
+  const v = document.getElementById('reel');
+  const b = document.getElementById('toggle');
+  const sync = () => { b.textContent = v.paused ? 'Play' : 'Pause'; };
+  b.addEventListener('click', () => { v.paused ? v.play() : v.pause(); });
+  v.addEventListener('click', () => { v.paused ? v.play() : v.pause(); });
+  v.addEventListener('play', sync);
+  v.addEventListener('pause', sync);
+  v.addEventListener('ended', sync);
+</script>
+</body>
+</html>
